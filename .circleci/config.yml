@@ -5,4 +5,4 @@ jobs:
        - image: circleci/node:latest
      steps:
        - checkout
-       - run: ssh $DROPLET_USER@$DROPLET_IP; cd /var/www/html; git pull; npm run build
+       - run: ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no $DROPLET_USER@$DROPLET_IP; cd /var/www/html; git pull; npm run build
