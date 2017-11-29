@@ -1,7 +1,7 @@
 version: 2
 jobs:
    build:
-    machine: true
+     machine: true
      steps:
        - checkout
        - run: ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no $DROPLET_USER@$DROPLET_IP; cd /var/www/html; git pull; npm run build
