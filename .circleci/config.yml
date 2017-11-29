@@ -6,4 +6,4 @@ jobs:
        - checkout
        - deploy:
             name: Deploy to VPS 
-            command: ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no $DROPLET_USER@$DROPLET_IP "cd /var/www/html; git pull; npm install; npm run build"
+            command: ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no $DROPLET_USER@$DROPLET_IP "cd /var/www/html; git pull origin master; npm install; npm run build"
