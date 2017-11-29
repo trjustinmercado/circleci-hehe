@@ -7,7 +7,7 @@ class PatrickController {
     vm.hasPink = false;
     vm.onClickScreen = () => {
       if (vm.hasPink) {
-        vm.onScreenText = 'Is thiss the Krusty Krab?';
+        vm.onScreenText = 'Is this the Krusty Krab?';
       } else {
         vm.onScreenText = 'No This is Patrick';
       }
