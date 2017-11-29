@@ -18,10 +18,6 @@ jobs:
     steps:
       - checkout
       - run: echo 'deploying master branch'
-      - run:
-          name: "Fix host authenticity"
-          command: |
-            ssh-keyscan $DROPLET_IP >> ~/.ssh/known_hosts
       - run: 
           name: SSH AND DEPLOY
           command: |
