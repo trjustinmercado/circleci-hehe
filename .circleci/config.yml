@@ -4,8 +4,6 @@ jobs:
      machine: true
      steps:
        - checkout
-       - run: ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no $DROPLET_USER@$DROPLET_IP;
-       - run: cd /var/www/html
-       - run: git pull
-       - run: npm install
-       - run: npm run build
+       - deploy:
+            name: Deploy to VPS 
+            command: ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no $DROPLET_USER@$DROPLET_IP "cd /var/www/html; git pull; npm install; npm run build"
