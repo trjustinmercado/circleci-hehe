@@ -17,5 +17,5 @@ jobs:
 
     steps:
       - checkout
-      - run: pwd
-      - run: sh ./deploy.sh
+      - echo 'deploying master branch'
+      - ssh -v $DROPLET_USER@$DROPLET_IP "cd /var/www/html; sh ./deploy.sh"
