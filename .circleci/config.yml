@@ -18,4 +18,4 @@ jobs:
     steps:
       - checkout
       - run: pwd
-      - run: ./deploy.sh
+      - run: sh ./deploy.sh
