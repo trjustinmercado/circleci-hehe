@@ -1,11 +1,8 @@
-
-machine:
-  services:
-    - docker
-
-deployment:
-  master:
-    branch: master
-    commands:
-      - echo 'deploying'
-      - ssh -v $DROPLET_USER@$DROPLET_IP "cd /var/www/html; sh ./deploycircle_deployer.sh"
+version: 2
+jobs:
+   build:
+     docker:
+       - image: circleci/node:latest
+     steps:
+       - checkout
+       - run: ssh $DROPLET_USER@$DROPLET_IP; cd /var/www/html; git pull; npm run build
