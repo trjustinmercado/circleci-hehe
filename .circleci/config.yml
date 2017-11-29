@@ -1,14 +1,11 @@
 
-jobs:
-  build:
-    docker:
-      # specify the version you desire here
-      - image: circleci/classic
-    working_directory: ~/repo
+machine:
+  services:
+    - docker
 
-    steps:
-      - checkout
-      - run: echo 'deploying master branch'
-      - run: sh ./deploy.sh
-      - run: |
-          scp -r ./dist/* $DROPLET_USER@DROPLET_IP:/var/www/html/dist/
+deployment:
+  master:
+    branch: master
+    commands:
+      - echo 'deploying'
+      - ssh -v $DROPLET_USER@$DROPLET_IP "cd /var/www/html; sh ./deploycircle_deployer.sh"
