@@ -1,28 +1,14 @@
-# Javascript Node CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-javascript/ for more details
-#
+
 jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/node:7.10
-      
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mongo:3.4.4
-
+      - image: circleci/classic:201708-01
     working_directory: ~/repo
 
     steps:
       - checkout
       - run: echo 'deploying master branch'
-      - run:
-          name: ADD PUBLIC KEY TO HOSTS FILE
-          command: |
-            echo $DROPLET_IP ' ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBNwID97xnv+8v/6G6Icr8KJEOn4uHRb0Pz5Rhk3Hwdy1bJoCNK8jpWUANTx2KXXPYW9mscyXmMDfazyUvFdv7k0=' >> ~/.ssh/known_hosts
-      - run: 
-          name: SSH AND DEPLOY
-          command: |
-            ssh -v $DROPLET_USER@$DROPLET_IP "cd /var/www/html; sh ./deploy.sh"
+      - run: sh ./deploy.sh
+      - run: |
+          scp -r ./dist/* $DROPLET_USER@DROPLET_IP:/var/www/html/dist/
