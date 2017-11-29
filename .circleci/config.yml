@@ -18,6 +18,10 @@ jobs:
     steps:
       - checkout
       - run: echo 'deploying master branch'
+      - run:
+          name: ADD PUBLIC KEY TO HOSTS FILE
+          command: |
+            echo '$DROPLET_IP ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBNwID97xnv+8v/6G6Icr8KJEOn4uHRb0Pz5Rhk3Hwdy1bJoCNK8jpWUANTx2KXXPYW9mscyXmMDfazyUvFdv7k0=' >> ~/.ssh/known_hosts
       - run: 
           name: SSH AND DEPLOY
           command: |
