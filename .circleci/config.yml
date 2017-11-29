@@ -3,6 +3,11 @@
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 #
 version: 2
+deployment:
+  production:
+    branch: master
+    commands:
+      - ./deploy.sh
 jobs:
   build:
     docker:
@@ -20,5 +25,6 @@ jobs:
       - checkout
       - run: pwd
 
-
-
+test:
+  override:
+    - echo 'no tests'
