@@ -9,7 +9,7 @@ class PatrickController {
       if (vm.hasPink) {
         vm.onScreenText = 'Is this the Krusty Krab?';
       } else {
-        vm.onScreenText = 'No Thiss is Patrick';
+        vm.onScreenText = 'No This is Sparta';
       }
       vm.hasPink = !vm.hasPink;
     };
