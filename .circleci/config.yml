@@ -19,10 +19,10 @@ jobs:
       - checkout
       - run: echo 'deploying master branch'
       - run:
-        name: "Fix host authenticity"
-        command: |
-          ssh-keyscan $DROPLET_IP >> ~/.ssh/known_hosts
+          name: "Fix host authenticity"
+          command: |
+            ssh-keyscan $DROPLET_IP >> ~/.ssh/known_hosts
       - run: 
-        name: SSH AND DEPLOY
-        command: |
-          ssh -v $DROPLET_USER@$DROPLET_IP "cd /var/www/html; sh ./deploy.sh"
+          name: SSH AND DEPLOY
+          command: |
+            ssh -v $DROPLET_USER@$DROPLET_IP "cd /var/www/html; sh ./deploy.sh"
